@@ -21,7 +21,7 @@ class List:
             print(current.content)
             current = current.next
 
-    def insertOnEnd(self,x):
+    def append(self,x):
         new = Node(x,None)
         self.end.next = new
         self.end = new
@@ -45,3 +45,17 @@ class List:
             current = current.next
         if(self.end.content == x):
             self.end = previous
+    
+    def index(self,x):
+        index = 0
+        current = self.head.next
+        previous = self.head
+        while(current != None):
+            if(current.content == x):
+                return index
+            else: 
+                index = index + 1
+                current = current.next
+                previous = current
+        if(self.end.content != x):
+            print('número inexistente')
