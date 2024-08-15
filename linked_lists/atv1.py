@@ -8,7 +8,6 @@ class LinkedList:
         self.content = content
         self.next = next
 
-
 # uma lista nesse caso tem um início e um fim, por isso assimilamos uma head e um end
 class List:
     def __init__(self):
@@ -74,10 +73,3 @@ class List:
             elif(current.content != data):
                 current = current.next
         return count
-
-list = List()
-list.append(1)
-list.append(1)
-list.append(1)
-list.append(2)
-print(list.count(1))
