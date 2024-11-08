@@ -41,29 +41,15 @@ class Node:
 
             return self.left.exists(value)
 
+    # implementar método de deletar node
     def delete(self, value):
-        if not self.exists(value):
-            return False
-        
-        
-        
-
-    def get_min(self):
-        current = self
-        while current.left != None:
-            current = current.left
-        return current.key
-    
-    def get_max(self):
-        current = self
-        while current.right != None:
-            current = current.right
-        return current.key
+        return 
  
-node = Node(4)
 
-node.insert(2)
-node.insert(3)
-node.insert(5)
-node.insert(7)
-node.insert(1)
+tree = Node(4)
+tree.insert(2)
+tree.insert(3)
+tree.insert(5)
+tree.insert(7)
+tree.insert(6)
+
