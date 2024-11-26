@@ -27,7 +27,7 @@ class Graph:
         for neighbors in self.adj_list.values():
             neighbors.discard(node)
         
-        self.adj_list.remove(node)
+        self.adj_list.pop(node)
 
 
     def add_edge(self, from_node, to_node):
@@ -70,8 +70,6 @@ class Graph:
             current_node, path = queue.pop(0)
 
             if current_node == to_node:
-                print(f"caminho mais curto de {from_node} até {to_node}")
-                print(f"path: {path}")
                 return path
             
             if current_node not in visited:
@@ -82,17 +80,52 @@ class Graph:
 
         return None
         
-
+# Instanciação do grafo
 graph = Graph()
-graph.add_node(3)
-graph.add_node(4)
-graph.add_node(5)
-graph.add_node(6)
-graph.add_node(7)
 
-graph.add_edge(3,4)
-graph.add_edge(3,5)
-graph.add_edge(3,6)
-graph.add_edge(4,5)
+# Adição de nós
+nodes = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"]
+for node in nodes:
+    graph.add_node(node)
 
-graph.find_shortest(6, 5)
+# Adição de arestas
+edges = [
+    ("A", "B"), ("A", "C"), ("A", "D"), ("B", "E"), ("B", "F"),
+    ("C", "G"), ("C", "H"), ("D", "I"), ("D", "J"), ("E", "K"),
+    ("F", "L"), ("G", "M"), ("H", "N"), ("I", "O"), ("J", "K"),
+    ("K", "L"), ("L", "M"), ("M", "N"), ("N", "O"), ("O", "A")
+]
+for from_node, to_node in edges:
+    graph.add_edge(from_node, to_node)
+
+# Impressão do grafo
+print("Grafo inicial:")
+print(graph.print())
+
+# Remoção de uma aresta
+graph.remove_edge("A", "B")
+
+# Impressão do grafo após remover a aresta
+print("Grafo após remover a aresta entre A e B:")
+print(graph.print())
+
+# Remoção de um nó
+graph.remove_node("C")
+
+# Impressão do grafo após remover o nó
+print("Grafo após remover o nó C:")
+print(graph.print())
+
+# Encontrar caminho mais curto
+try:
+    caminho = graph.find_shortest("A", "K")
+    print(f"Caminho mais curto de A para K: {caminho}")
+except Exception as e:
+    print(e)
+
+# Teste adicional para caminho mais curto
+try:
+    caminho = graph.find_shortest("B", "N")
+    print(f"Caminho mais curto de B para N: {caminho}")
+except Exception as e:
+    print(e)
